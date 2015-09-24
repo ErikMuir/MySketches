@@ -1,0 +1,43 @@
+<html>
+<head>
+		<title>sketch2</title>
+		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
+</head>
+<body id="body" style="background: black; margin: 0; padding: 0;"></body>
+</html>
+<script type="text/javascript">
+		var num = 150;
+		var offSet = 0.0;
+		var theta = 0.0;
+		var sz = 0.0;
+		var x = 0.0;
+		var y = 0.0;
+		var loLimit = 40;
+		var hiLimit = 100;
+		
+		function setup() {
+				myCanvas = createCanvas(windowHeight, windowHeight);
+				myCanvas.parent('body');
+		}
+		
+		function mouseClicked() {
+				save();
+				return false;
+		}
+
+		function draw() {
+				background(0);	
+				colorMode(HSB, num, 100, 100);
+				fill(255, 5);
+				noStroke();
+				for (var i=0; i<num; i++) {
+						fill(i, 90, 100, 50);
+						offSet = TWO_PI/num*i;
+						y = map(sin(theta+offSet), -1, 1, height*.2, height*.8);
+						x = map(sin(theta-offSet), -1, 1, width*.2, width*.8);
+						sz = map(sin(theta*1+offSet*2), -1, 1, loLimit, hiLimit);
+						ellipse(x, y, sz*1.5, sz);
+				}
+				theta += 0.0523/3;
+		}
+</script>

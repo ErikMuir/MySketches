@@ -1,0 +1,41 @@
+
+body {
+  padding: 0;
+  margin: 0;
+	color: #f2f2f2;
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.frame {
+	width: 100%;
+	background: black;
+	border-collapse: collapse;
+}
+.thumbList {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 20px;
+}
+.thumb {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #333;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.thumb:hover {
+	opacity: 1;
+}
+.header, .footer {
+	height: 60px;
+}
+.header > div {
+	text-align: center;
+	font-size: 50px;
+}
+.footer > div {
+	text-align: center;
+	font-size: 12px;
+}
+#myContainer {
+	border: 0;
+}
