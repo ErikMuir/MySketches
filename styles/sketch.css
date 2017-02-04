@@ -2,7 +2,7 @@
 body {
   padding: 0;
   margin: 0;
-	color: #f2f2f2;
+	color: #aaa;
 	font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 .frame {
@@ -13,7 +13,7 @@ body {
 .thumbList {
 	list-style-type: none;
 	margin: 0;
-	padding: 0 20px;
+	padding: 0 0 0 20px;
 }
 .thumb {
 	width: 100px;
@@ -22,7 +22,22 @@ body {
 	cursor: pointer;
 	opacity: 0.5;
 }
-.thumb:hover {
+.controlList {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+.controlList > li {
+	display: inline-block;
+	margin: 20px 0 0 10px;
+}
+.control {
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.thumb:hover, .control:hover {
 	opacity: 1;
 }
 .header, .footer {
@@ -31,11 +46,16 @@ body {
 .header > div {
 	text-align: center;
 	font-size: 50px;
+	cursor: default;
+	color: #aaa;
 }
 .footer > div {
 	text-align: center;
 	font-size: 12px;
+	cursor: default;
+	color: #aaa;
 }
 #myContainer {
 	border: 0;
+	background: black;
 }

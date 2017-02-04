@@ -1,9 +1,16 @@
 <html>
 <head>
-		<title>sketch2</title>
+		<title>sketch3</title>
 		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
 </head>
-<body id="body" style="background: black; margin: 0; padding: 0;"></body>
+<style type="text/css">
+		body {
+				background-color: black;
+				margin: 0;
+				padding: 0;
+		}
+</style>
+<body id="body"></body>
 </html>
 <script type="text/javascript">
 		var num = 150;
@@ -18,11 +25,6 @@
 		function setup() {
 				myCanvas = createCanvas(windowHeight, windowHeight);
 				myCanvas.parent('body');
-		}
-		
-		function mouseClicked() {
-				save();
-				return false;
 		}
 
 		function draw() {
@@ -39,5 +41,9 @@
 						ellipse(x, y, sz*1.5, sz);
 				}
 				theta += 0.0523/3;
+		}
+		
+		function windowResized() {
+				resizeCanvas(windowHeight, windowHeight);
 		}
 </script>

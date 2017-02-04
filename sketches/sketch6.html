@@ -1,0 +1,62 @@
+<html>
+<head>
+		<title>sketch6</title>
+		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
+</head>
+<style type="text/css">
+		body {
+				background-color: black;
+				margin: 0;
+				padding: 0;
+		}
+</style>
+<body id="body"></body>
+</html>
+<script type="text/javascript">
+		var num = 30;
+		var movers = 20;
+		var d3 = 15;
+		var frames = 120;
+		var angle = 0.0;
+		var theta = 0.0;
+		var d = 0.0;
+		var d2 = 0.0;
+ 
+		function setup() {
+				myCanvas = createCanvas(windowHeight, windowHeight);
+				myCanvas.parent('body');
+		}
+ 
+		function draw() {
+				randomSeed(455);
+				background(0);
+				noFill();
+			
+				for (var i=0; i<num; i++) {
+						angle = TWO_PI/num*i;
+						d = map(sin(theta + angle * 3), -1, 1, 200, 300);
+						var outerX = width/2 + cos(angle)*d;
+						var outerY = height/2+sin(angle)*d;
+						var cx1 = width/2 + cos(angle)*d*.6;
+						var cy1 = height/2+sin(angle)*d*.8;
+						d2 = map(sin(theta), -1, 1, 0, 50);
+						for (var j=0; j<movers; j++) {
+								var offSet = TWO_PI/movers*j;
+								var CmoverX = width/2+cos(theta+offSet)*d2;
+								var CmoverY = height/2+sin(theta+offSet)*d2;
+								var moverX = CmoverX + cos(angle)*d3;
+								var moverY = CmoverY + sin(angle)*d3;
+								var cx2 =  CmoverX + cos(angle)*d3*2.8;
+								var cy2 = CmoverY + sin(angle)*d3*2.1;
+								noFill();
+								stroke(34, 102, 102, 50);
+								bezier(outerX, outerY, cx1, cy1, cx2, cy2, moverX, moverY);
+						}
+				}
+				theta += TWO_PI/frames;
+		}
+		
+		function windowResized() {
+				resizeCanvas(windowHeight, windowHeight);
+		}
+</script>

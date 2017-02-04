@@ -3,7 +3,14 @@
 		<title>sketch1</title>
 		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
 </head>
-<body id="body" style="background: black; margin: 0; padding: 0;"></body>
+<style type="text/css">
+		body {
+				background-color: black;
+				margin: 0;
+				padding: 0;
+		}
+</style>
+<body id="body"></body>
 </html>
 <script type="text/javascript">
 		var frames = 320;
@@ -26,11 +33,6 @@
 		function setup() {
 				myCanvas = createCanvas(windowHeight, windowHeight);
 				myCanvas.parent('body');
-		}
-		
-		function mouseClicked() {
-				save();
-				return false;
 		}
 		
 		function draw() {
@@ -90,4 +92,8 @@
 				theta += TWO_PI/frames;
 				iteration++;
 		}
+		
+		function windowResized() {
+				resizeCanvas(windowHeight, windowHeight);
+		}		
 </script>

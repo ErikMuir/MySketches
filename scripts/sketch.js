@@ -1,9 +1,16 @@
+var active;
 
 $(window).ready(function () {
+	
+	// set size of container
 	$('#myContainer').attr({ 
-		'width': (innerHeight - 122),
-		'height': (innerHeight - 122)
+		'width': (innerHeight - 128),
+		'height': (innerHeight - 128)
 	});
+	
+	// load default sketch on page load
+	$('#myContainer').attr('src', 'sketches/sketch1.html');
+	active = true;
 	
 	// listener for clicking on thumbnails
 	$('.thumb').on('click', function () {
@@ -11,12 +18,19 @@ $(window).ready(function () {
 		$('#myContainer').attr('src', 'sketches/' + id + '.html');
 	});
 	
-	// listener for clicking on main sketch
-	$('#myContainer').on('click', function () {
-		save();
-		return false;
+	// listener for clicking on pause/resume
+	$('#pauseresume').on('click', function () {
+		if (active) {
+			document.getElementById('myContainer').contentWindow.noLoop();
+		} else {
+			document.getElementById('myContainer').contentWindow.loop();
+		}
+		active = !active;
 	});
 	
-	// load a specific sketch on page load
-	$('#myContainer').attr('src', 'sketches/sketch1.html');
+	// listener for clicking on save
+	$('#save').on('click', function () {
+		document.getElementById('myContainer').contentWindow.save();
+	});
+	
 });
