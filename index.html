@@ -1,49 +1,39 @@
 <html>
 <head>
-  <title>p5.js sketches</title>
+  	<title>p5.js sketches</title>
 	<script language="javascript" type="text/javascript" src="scripts/jquery-2.1.3.min.js"></script>
-  <script language="javascript" type="text/javascript" src="scripts/sketch.js"></script>
+	<script language="javascript" type="text/javascript" src="scripts/sketch.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/sketch.css" />
 </head>
 <body>
 <table class="frame">
 	<tr>
-		<td align="left" width="33%">
-			<ul class="controlList">
-				<li><img class="control" id="pauseresume" src="images/playpause.png" title="Pause/Resume" alt="Pause/Resume" /></li>
+		<td align="left" width="33%" valign="top">
+			<ul class="control-list">
+				<li><img class="control" id="pause-resume" src="images/playpause.png" title="Pause/Resume" alt="Pause/Resume" /></li>
 				<li><img class="control" id="save" src="images/save.png" title="Save" alt="Save" /></li>
 			</ul>
 		</td>
-		<td class="header">
-			<div>p5.js sketches</div>
+		<td id="header">
+			<div id="thumb-list">
+				<img class="thumb" id="sketch1" data-index="0" src="images/sketch1.png" />
+				<img class="thumb" id="sketch2" data-index="1" src="images/sketch2.png" />
+				<img class="thumb" id="sketch3" data-index="2" src="images/sketch3.png" />
+				<img class="thumb" id="sketch4" data-index="3" src="images/sketch4.png" />
+				<img class="thumb" id="sketch5" data-index="4" src="images/sketch5.png" />
+				<img class="thumb" id="sketch6" data-index="5" src="images/sketch6.png" />
+			</div>
 		</td>
-		<td align="right" width="33%"></td>
-	</tr>
-	<tr>
-		<td align="left" width="33%">
-			<ul class="thumbList">
-				<li><img class="thumb" id="sketch1" src="images/sketch1.png" /></li>
-				<li><img class="thumb" id="sketch2" src="images/sketch2.png" /></li>
-				<li><img class="thumb" id="sketch3" src="images/sketch3.png" /></li>
-				<li><img class="thumb" id="sketch4" src="images/sketch4.png" /></li>
-				<li><img class="thumb" id="sketch5" src="images/sketch5.png" /></li>
-				<li><img class="thumb" id="sketch6" src="images/sketch6.png" /></li>
-			</ul>
-		</td>
-		<td>
-			<iframe id="myContainer"></iframe>
-		</td>
-		<td align="right" width="33%">
-			
-		</td>
+		<td align="right" width="33%" valign="top"></td>
 	</tr>
 	<tr>
 		<td align="left" width="33%"></td>
-		<td class="footer">
-			<div>&copy; 2017 Erik Muir | MuirDev.com</div>
+		<td>
+			<iframe id="my-container"></iframe>
 		</td>
 		<td align="right" width="33%"></td>
 	</tr>
 </table>
+<div id="footer">&copy; <span id="copyright-year"></span> Erik Muir | MuirDev.com</div>
 </body>
 </html>

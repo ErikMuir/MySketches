@@ -1,84 +1,84 @@
 <html>
 <head>
-		<title>sketch4</title>
-		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
+	<title>sketch4</title>
+	<script type="text/javascript" src="../scripts/p5.min.js"></script>
 </head>
 <style type="text/css">
-		body {
-				background-color: black;
-				margin: 0;
-				padding: 0;
-		}
+	body {
+		background-color: black;
+		margin: 0;
+		padding: 0;
+	}
 </style>
 <body id="body"></body>
 </html>
 <script type="text/javascript">
-		var t = 0.0;
-		var radius = 75;
-		var frames = 240;
-		var num = 10;
-		var step = 0;
-		var col = 0.0;
-		var tt = 0.0;
-		var r = 0.0;
-		
-		function setup() {
-				myCanvas = createCanvas(windowHeight, windowHeight);
-				myCanvas.parent('body');
-				step = width/5;
-		}
+	var t = 0.0;
+	var radius = 75;
+	var frames = 240;
+	var num = 10;
+	var step = 0;
+	var col = 0.0;
+	var tt = 0.0;
+	var r = 0.0;
+	
+	function setup() {
+		myCanvas = createCanvas(windowHeight, windowHeight);
+		myCanvas.parent('body');
+		step = width/5;
+	}
 
-		function draw() {
-				background(0);	
-				colorMode(HSB, 360, 100, 100);
-				fill(255, 5);
-				noStroke();
-				t = (frameCount % frames) / frames;
-				translate(width/2, height/2);
-				for (var i=0; i<num; i++) {
-						col = (360.0/num*i);
-						push();
-						rotate(TWO_PI/num*i);
-						translate(150, 0);
-						push();
-						rotate(PI/2);
-						if (t<0.5) {
-								tt = map(t, 0, 0.5, 0, 1); // normalizing the time of the first half of the cycle
-								if (tt<.5) {
-										fill(col, 90, 90);
-										r = map(tt, 0, 0.5, radius, 0);
-										arc(0, 0, radius, r, 0, PI, OPEN); // moon lower, shrinking
-										arc(0, 0, radius, radius, PI, TWO_PI, OPEN); // moon upper, stable
-								} else {
-										fill(col, 90, 90);
-										arc(0, 0, radius, radius, PI, TWO_PI, OPEN); // moon upper, stable
-										r = map(tt, 0.5, 1.0, 0, radius);
-										fill(0);
-										arc(0, 0, radius, r, PI, TWO_PI, OPEN); // bg upper, increasing
-								}
-						} else {
-								tt = map(t, 0.5, 1, 0, 1); // normalizing the time of the second half of the cycle
-								if (tt<.5) {
-										fill(0);
-										arc(0, 0, radius, radius, PI, TWO_PI, OPEN); // bg upper, stable
-										r = map(tt, 0, 0.5, radius, 0);
-										fill(col, 90, 90);
-										arc(0, 0, radius, radius, 0, PI, OPEN); // moon lower, stable > partly hidden by the following arc
-										fill(0);
-										arc(0, 0, radius, r, 0, PI); // bg lower, decreasing
-								} else {
-										fill(col, 90, 90);
-										r = map(tt, 0.5, 1.0, 0, radius);
-										arc(0, 0, radius, radius, 0, PI, OPEN); // moon lower, stable
-										arc(0, 0, radius, r, PI, TWO_PI, OPEN); // moon upper, increasing
-								}
-						}
-						pop();
-						pop();
+	function draw() {
+		background(0);	
+		colorMode(HSB, 360, 100, 100);
+		fill(255, 5);
+		noStroke();
+		t = (frameCount % frames) / frames;
+		translate(width/2, height/2);
+		for (var i=0; i<num; i++) {
+			col = (360.0/num*i);
+			push();
+			rotate(TWO_PI/num*i);
+			translate(150, 0);
+			push();
+			rotate(PI/2);
+			if (t<0.5) {
+				tt = map(t, 0, 0.5, 0, 1); // normalizing the time of the first half of the cycle
+				if (tt<.5) {
+					fill(col, 90, 90);
+					r = map(tt, 0, 0.5, radius, 0);
+					arc(0, 0, radius, r, 0, PI, OPEN); // moon lower, shrinking
+					arc(0, 0, radius, radius, PI, TWO_PI, OPEN); // moon upper, stable
+				} else {
+					fill(col, 90, 90);
+					arc(0, 0, radius, radius, PI, TWO_PI, OPEN); // moon upper, stable
+					r = map(tt, 0.5, 1.0, 0, radius);
+					fill(0);
+					arc(0, 0, radius, r, PI, TWO_PI, OPEN); // bg upper, increasing
 				}
+			} else {
+				tt = map(t, 0.5, 1, 0, 1); // normalizing the time of the second half of the cycle
+				if (tt<.5) {
+					fill(0);
+					arc(0, 0, radius, radius, PI, TWO_PI, OPEN); // bg upper, stable
+					r = map(tt, 0, 0.5, radius, 0);
+					fill(col, 90, 90);
+					arc(0, 0, radius, radius, 0, PI, OPEN); // moon lower, stable > partly hidden by the following arc
+					fill(0);
+					arc(0, 0, radius, r, 0, PI); // bg lower, decreasing
+				} else {
+					fill(col, 90, 90);
+					r = map(tt, 0.5, 1.0, 0, radius);
+					arc(0, 0, radius, radius, 0, PI, OPEN); // moon lower, stable
+					arc(0, 0, radius, r, PI, TWO_PI, OPEN); // moon upper, increasing
+				}
+			}
+			pop();
+			pop();
 		}
-		
-		function windowResized() {
-				resizeCanvas(windowHeight, windowHeight);
-		}
+	}
+	
+	function windowResized() {
+		resizeCanvas(windowHeight, windowHeight);
+	}
 </script>

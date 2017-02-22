@@ -1,63 +1,63 @@
 <html>
 <head>
-		<title>sketch5</title>
-		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
+	<title>sketch5</title>
+	<script type="text/javascript" src="../scripts/p5.min.js"></script>
 </head>
 <style type="text/css">
-		body {
-				background-color: black;
-				margin: 0;
-				padding: 0;
-		}
+	body {
+		background-color: black;
+		margin: 0;
+		padding: 0;
+	}
 </style>
 <body id="body"></body>
 </html>
 <script type="text/javascript">
-		var num = 40; 
-		var movers = 5; 
-		var d3 = 20;
-		var frames = 180;
-		var angle = 0.0;
-		var theta = 0.0;
-		var d = 0.0;
-		var d2 = 0.0;
- 
-		function setup() {
-				myCanvas = createCanvas(windowHeight, windowHeight);
-				myCanvas.parent('body');
-		}
- 
-		function draw() {
-				randomSeed(455);
-				background(0);
+	var num = 20;//40
+	var movers = 10;//5 
+	var d3 = 1; //20
+	var frames = 300;//180
+	var angle = 1.2;//0.0
+	var theta = 0.5;//0.0
+	var d = 0.5;//0.0
+	var d2 = 0.5;//0.0
+
+	function setup() {
+		myCanvas = createCanvas(windowHeight, windowHeight);
+		myCanvas.parent('body');
+	}
+
+	function draw() {
+		randomSeed(455);
+		background(0);
+		noFill();
+		d = map(sin(theta), -1, 1, 150, 250);//350
+		for (var i=0; i<num; i++) {
+			angle = TWO_PI/num*i;
+			var outerX = width/2 + cos(angle)*d;
+			var outerY = height/2 + sin(angle)*d;
+			var cx1 = width/2 + cos(angle)*d*.6;
+			var cy1 = height/2 + sin(angle)*d*.8;
+			d2 = map(sin(theta), -1, 1, 0, 100);
+			for (var j=0; j<movers; j++) {
+				var offSet = TWO_PI/movers*j;
+				var CmoverX = width/2 + cos(theta+offSet)*d2;
+				var CmoverY = height/2 + sin(theta+offSet)*d2;
+				var moverX = CmoverX + cos(angle)*d3;
+				var moverY = CmoverY + sin(angle)*d3;
+				var cx2 =  CmoverX + cos(angle)*d3*2.8;
+				var cy2 = CmoverY + sin(angle)*d3*2.1;
 				noFill();
-				d = map(sin(theta), -1, 1, 150, 350);
-				for (var i=0; i<num; i++) {
-						angle = TWO_PI/num*i;
-						var outerX = width/2 + cos(angle)*d;
-						var outerY = height/2 + sin(angle)*d;
-						var cx1 = width/2 + cos(angle)*d*.6;
-						var cy1 = height/2 + sin(angle)*d*.8;
-						d2 = map(sin(theta), -1, 1, 0, 100);
-						for (var j=0; j<movers; j++) {
-								var offSet = TWO_PI/movers*j;
-								var CmoverX = width/2 + cos(theta+offSet)*d2;
-								var CmoverY = height/2 + sin(theta+offSet)*d2;
-								var moverX = CmoverX + cos(angle)*d3;
-								var moverY = CmoverY + sin(angle)*d3;
-								var cx2 =  CmoverX + cos(angle)*d3*2.8;
-								var cy2 = CmoverY + sin(angle)*d3*2.1;
-								noFill();
-								stroke(128, 21, 21, 255);
-								bezier(outerX, outerY, cx1, cy1, cx2, cy2, moverX, moverY);
-								fill(0);
-								ellipse(CmoverX, CmoverY, d3*2, d3*2);
-						}
-				}
-				theta += TWO_PI/frames;
+				stroke(128, 21, 21, 255);
+				bezier(outerX, outerY, cx1, cy1, cx2, cy2, moverX, moverY);
+				fill(0);
+				ellipse(CmoverX, CmoverY, d3*2, d3*2);
+			}
 		}
-		
-		function windowResized() {
-				resizeCanvas(windowHeight, windowHeight);
-		}
+		theta += TWO_PI/frames;
+	}
+	
+	function windowResized() {
+		resizeCanvas(windowHeight, windowHeight);
+	}
 </script>

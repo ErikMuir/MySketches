@@ -1,99 +1,99 @@
 <html>
 <head>
-		<title>sketch1</title>
-		<script language="javascript" type="text/javascript" src="../scripts/p5.min.js"></script>
+	<title>sketch1</title>
+	<script type="text/javascript" src="../scripts/p5.min.js"></script>
 </head>
 <style type="text/css">
-		body {
-				background-color: black;
-				margin: 0;
-				padding: 0;
-		}
+	body {
+		background-color: black;
+		margin: 0;
+		padding: 0;
+	}
 </style>
 <body id="body"></body>
 </html>
 <script type="text/javascript">
-		var frames = 320;
-		var num = 30;
-		var theta = 0.0;
-		var offSet = 0.0;
-		var x = 0.0;
-		var sz = 0.0;
-		var r = 0;
-		var g = 0;
-		var b = 0;
-		var rAsc = true;
-		var gAsc = true;
-		var bAsc = true;
-		var rCycle= 1;
-		var gCycle= 3;
-		var bCycle= 2;
-		var iteration = 0;
-		
-		function setup() {
-				myCanvas = createCanvas(windowHeight, windowHeight);
-				myCanvas.parent('body');
+	var frames = 320;
+	var num = 30;
+	var theta = 0.0;
+	var offSet = 0.0;
+	var x = 0.0;
+	var sz = 0.0;
+	var r = 0;
+	var g = 0;
+	var b = 0;
+	var rAsc = true;
+	var gAsc = true;
+	var bAsc = true;
+	var rCycle= 1;
+	var gCycle= 3;
+	var bCycle= 2;
+	var iteration = 0;
+	
+	function setup() {
+		myCanvas = createCanvas(windowHeight, windowHeight);
+		myCanvas.parent('body');
+	}
+	
+	function draw() {
+		background(0);
+		noStroke();
+		// set red
+		if (iteration % rCycle == 0) {
+			if (rAsc) {
+				r++;
+				if (r == 245) rAsc = false;
+			} else {
+				r--;
+				if (r == 8) rAsc = true;
+			}
 		}
-		
-		function draw() {
-				background(0);
-				noStroke();
-				// set red
-				if (iteration % rCycle == 0) {
-						if (rAsc) {
-								r++;
-								if (r == 245) rAsc = false;
-						} else {
-								r--;
-								if (r == 8) rAsc = true;
-						}
-				}
-				// set green
-				if (iteration % gCycle == 0) {
-						if (gAsc) {
-								g+=2;
-								if (g == 244) gAsc = false;
-						} else {
-								g-=2;
-								if (g == 8) gAsc = true;
-						}
-				}
-				// set blue
-				if (iteration % gCycle == 0) {
-						if (bAsc) {
-								b+=4;
-								if (b == 244) bAsc = false;
-						} else {
-								b-=4;
-								if (b == 8) bAsc = true;
-						}
-				}
-				fill(r, g, b, 50);
-				translate(width/2, height/2);
-				for (var i=0; i<num; i++) {
-						push();
-						offSet = TWO_PI/num*i;
-						rotate(offSet);
-						sz = map(sin(theta), -1, 1, width*.15, width*.2);
-						x = map(sin(theta), -1, 1, sz, width*.2);
-						translate(x, 0);
-						push();
-						rotate(theta);
-						if (i%2 == 0) {
-								ellipse(0, 0, sz, sz*2);
-						} else {
-								ellipse(0, 0, sz*.7, sz*2*.7);
-						}
-						fill(r, g, b, 25);
-						rect(0, 0, sz*.2, sz*2*.2);
-						pop();
-						pop();
-				}
-				theta += TWO_PI/frames;
-				iteration++;
+		// set green
+		if (iteration % gCycle == 0) {
+			if (gAsc) {
+				g+=2;
+				if (g == 244) gAsc = false;
+			} else {
+				g-=2;
+				if (g == 8) gAsc = true;
+			}
 		}
-		
-		function windowResized() {
-				resizeCanvas(windowHeight, windowHeight);
-		}		
+		// set blue
+		if (iteration % gCycle == 0) {
+			if (bAsc) {
+				b+=4;
+				if (b == 244) bAsc = false;
+			} else {
+				b-=4;
+				if (b == 8) bAsc = true;
+			}
+		}
+		fill(r, g, b, 50);
+		translate(width/2, height/2);
+		for (var i=0; i<num; i++) {
+			push();
+			offSet = TWO_PI/num*i;
+			rotate(offSet);
+			sz = map(sin(theta), -1, 1, width*.15, width*.2);
+			x = map(sin(theta), -1, 1, sz, width*.2);
+			translate(x, 0);
+			push();
+			rotate(theta);
+			if (i%2 == 0) {
+				ellipse(0, 0, sz, sz*2);
+			} else {
+				ellipse(0, 0, sz*.7, sz*2*.7);
+			}
+			fill(r, g, b, 25);
+			rect(0, 0, sz*.2, sz*2*.2);
+			pop();
+			pop();
+		}
+		theta += TWO_PI/frames;
+		iteration++;
+	}
+	
+	function windowResized() {
+		resizeCanvas(windowHeight, windowHeight);
+	}
 </script>
