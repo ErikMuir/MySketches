@@ -14,7 +14,7 @@ body {
 #header {
 	text-align: center;
 }
-#thumb-list {
+#thumb-list-container {
 	margin: 10px 0;
 }
 .thumb {
